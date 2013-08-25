@@ -1,0 +1,244 @@
+<!DOCTYPE html> 
+<html lang="zh-CN"> 
+    <head> 
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+        <title>NKU Linux Mirror - Help Center</title>
+        <link rel="stylesheet" href="html/style.css" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
+        <script type="text/javascript" src="html/scroll.js"></script> 
+        <script type="text/javascript">
+            function updateUbuntuVersion(select) {
+                var arr = document.getElementsByClassName('ubuntu-version');
+                for ( var i = 0; i < arr.length; ++i) {
+                    arr[i].innerHTML = select.value;
+                }
+            }
+            function updateRPMFusion(select) {
+                var value = [
+"su -c 'yum localinstall --nogpgcheck http://ftp.nankai.edu.cn/rpmfusion/free/fedora/rpmfusion-free-release-stable.noarch.rpm http://ftp.nankai.edu.cn/rpmfusion/nonfree/fedora/rpmfusion-nonfree-release-stable.noarch.rpm'",
+"su -c 'yum localinstall --nogpgcheck http://ftp.nankai.edu.cn/rpmfusion/free/fedora/rpmfusion-free-release-rawhide.noarch.rpm http://ftp.nankai.edu.cn/rpmfusion/nonfree/fedora/rpmfusion-nonfree-release-rawhide.noarch.rpm'",
+"su -c 'rpm -Uvh http://ftp.nankai.edu.cn/rpmfusion/free/el/updates/testing/5/i386/rpmfusion-free-release-5-0.1.noarch.rpm http://ftp.nankai.edu.cn/rpmfusion/nonfree/el/updates/testing/5/i386/rpmfusion-nonfree-release-5-0.1.noarch.rpm'",
+"su -c 'rpm -Uvh http://ftp.nankai.edu.cn/rpmfusion/free/el/updates/testing/6/i386/rpmfusion-free-release-6-0.1.noarch.rpm http://ftp.nankai.edu.cn/rpmfusion/nonfree/el/updates/testing/6/i386/rpmfusion-nonfree-release-6-0.1.noarch.rpm'"
+];
+                document.getElementById('rpmfusioncmd').innerHTML = value[select.value];
+            }
+            function updateEPEL(select) {
+                var value = [
+"su -c 'rpm -Uvh http://ftp.nankai.edu.cn/epel/6/i386/epel-release-6-7.noarch.rpm'",
+"su -c 'rpm -Uvh http://ftp.nankai.edu.cn/epel/6/x86_64/epel-release-6-7.noarch.rpm'",
+"su -c 'rpm -Uvh http://ftp.nankai.edu.cn/epel/5/i386/epel-release-5-4.noarch.rpm'",
+"su -c 'rpm -Uvh http://ftp.nankai.edu.cn/epel/5/x86_64/epel-release-5-4.noarch.rpm'",
+"su -c 'rpm -Uvh http://ftp.nankai.edu.cn/epel/4/i386/epel-release-4-10.noarch.rpm'",
+"su -c 'rpm -Uvh http://ftp.nankai.edu.cn/epel/4/x86_64/epel-release-4-10.noarch.rpm'"
+];
+                document.getElementById('epelcmd').innerHTML = value[select.value];
+            }
+        </script>
+    </head>
+    <body>
+        <div id="Header">
+            <ul>
+                <li id="Logo">
+                    <a href="#Welcome">NKU Linux Mirror</a>
+                </li>
+                <li id="Nav-ArchLinux">
+                    <a href="#ArchLinux">Arch Linux</a>
+                    <span class="icon"></span>
+                </li>
+                <li id="Nav-CentOS">
+                    <a href="#CentOS">CentOS</a>
+                    <span class="icon"></span>
+                </li>
+                <li id="Nav-Fedora">
+                    <a href="#Fedora">Fedora</a>
+                    <span class="icon"></span>
+                </li>
+                <li id="Nav-Gentoo">
+                    <a href="#Gentoo">Gentoo</a>
+                    <span class="icon"></span>
+                </li>
+                <li id="Nav-LinuxMint">
+                    <a href="#LinuxMint">Linux Mint</a>
+                    <span class="icon"></span>
+                </li>
+                <li id="Nav-Ubuntu">
+                    <a href="#Ubuntu">Ubuntu</a>
+                    <span class="icon"></span>
+                </li>
+            </ul>
+        </div>
+        <div id="Page">
+            <div id="Welcome">
+                <h1>Welcome</h1>
+                <p>欢迎来到南开大学 Linux 镜像站！</p>
+                <p>目前支持：</p>
+                <ul>
+                    <li>
+                        <a href="#ArchLinux">Arch Linux</a>: 灵活、轻量的发行版，遵循 KISS 原则
+                    </li>
+                    <li>
+                        <a href="#CentOS">CentOS</a>: 来自 Red Hat Enterprise Linux，具有高稳定性，适用于服务器
+                    </li>
+                    <li>
+                        <a href="#Fedora">Fedora</a>: 自由、友爱、杰出、前卫的发行版，由 Red Hat 公司赞助
+                        <p><a href="#EPEL">EPEL</a>: 针对 RHEL 及其衍生发行版(比如 CentOS、 Scientific Linux)的一个高质量附加软件包项目</p>
+                        <p><a href="#RPMFusion">RPM Fusion</a>: 提供 Fedora 和 RHEL 兼容的额外软件包</p>
+                    </li>
+                    <li>
+                        <a href="#Gentoo">Gentoo</a>: 面向最高级用户的发行版，可高度自定义，所有软件的源代码需要自行编译
+                    </li>
+                    <li>
+                        <a href="#LinuxMint">Linux Mint</a>: 致力于现代、优雅、舒适、易用的发行版，基于 Ubuntu
+                    <li>
+                        <a href="#Ubuntu">Ubuntu</a>: 非常流行的桌面发行版，强调易用性和国际化，基于 Debian
+                    </li>
+                    <li>
+                        <a href="#RubyGems">RubyGems</a>: Ruby 的包管理器
+                    </li>
+                </ul>
+                <p style="margin-top: 13px">本站现处于测试阶段，如果您在使用过程中遇到 bug 或有疑问或建议，烦请联系管理员 Leewings Ng :-)</p>
+                <p align="right">by Leewings Ng (osideal+nklm{at}gmail.com)</p>
+            </div>
+            <div id="ArchLinux">
+                <h1>Arch Linux</h1>
+                <p>用您喜欢的编辑器编辑 /etc/pacman.d/mirrorlist (请注意备份)</p>
+                <p>添加以下一行(校内用户建议加到首行以优先使用校内源获得高速)：</p>
+                <pre>Server = http://ftp.nankai.edu.cn/archlinux/$repo/os/$arch</pre>
+                <p>执行以下命令同步本地包数据库：</pre>
+                <pre>sudo pacman -Syy</pre>
+            </div>
+            <div id="CentOS">
+                <h1>CentOS</h1>
+                <p>支持 CentOS 4, 5, 6</p>
+                <p>下载对应版本 repo 文件，放进 /etc/yum.repos.d</p>
+                <ul>
+                    <li><a href="html/CentOS4-Base-nku.repo">CentOS 4</a></li>
+                    <li><a href="html/CentOS5-Base-nku.repo">CentOS 5</a></li>
+                    <li><a href="html/CentOS6-Base-nku.repo">CentOS 6</a></li>
+                </ul>
+                <p>执行以下命令生成缓存：</p>
+                <pre>sudo yum makecache</pre>
+            </div>
+            <div id="Fedora">
+                <h1>Fedora</h1>
+                <p>支持 Fedora 15, 16, 17</p>
+                <p>下载 <a href="html/fedora-nku.repo">fedora-nku.repo</a> 和 <a href="html/fedora-updates-nku.repo">fedora-updates-nku.repo</a>, 放进 /etc/yum.repos.d</p>
+                <p>执行以下命令生成缓存：</p>
+                <pre>sudo yum makecache</pre>
+            </div>
+            <div id="EPEL">
+                <h2>Extra Packages for Enterprise Linux (EPEL)</h2>
+                <p>请选择您需要的版本(默认为 EPEL 6, i386)：
+                    <select name="field.series" size="1" onchange="updateEPEL(this);">
+                        <option selected="selected" value="0">EPEL 6, i386</option>
+                        <option value="1">EPEL 6, x86_64</option>
+                        <option value="2">EPEL 5, i386</option>
+                        <option value="3">EPEL 5, x86_64</option>
+                    </select>
+                </p>
+                <p>执行以下命令：</p>
+                <pre><span id="epelcmd">su -c 'rpm -Uvh http://ftp.nankai.edu.cn/epel/6/i386/epel-release-6-7.noarch.rpm'</span></pre>
+                <p>然后请到 /etc/yum.repos.d 中修改您要开启的 EPEL 库的 repo 文件，修改方法如下：<p>
+                <ol>
+                    <li>注释 mirrorlist 开头的行</li>
+                    <li>取消注释 baseurl 开头的行</li>
+                    <li>将 baseurl 中的 "download.fedoraproject.org/pub" 改为 "ftp.nankai.edu.cn"</li>
+                    <li>执行以下命令生成缓存：
+                <pre>sudo yum makecache</pre>
+                    </li>
+                </ol>
+            </div>
+            <div id="RPMFusion">
+                <h2>RPM Fusion</h2>
+                <p>请选择您正在使用的版本(默认为 Fedora 15, 16)：
+                    <select name="field.series" size="1" onchange="updateRPMFusion(this);">
+                        <option selected="selected" value="0">Fedora 15, 16</option>
+                        <option value="1">Fedora Rawhide</option>
+                        <option value="2">RHEL 5 or CentOS</option>
+                        <option value="3">RHEL 6 or CentOS</option>
+                    </select>
+                </p>
+                <p>执行以下命令：</p>
+                <pre><span id="rpmfusioncmd">su -c 'yum localinstall --nogpgcheck http://ftp.nankai.edu.cn/rpmfusion/free/fedora/rpmfusion-free-release-stable.noarch.rpm http://ftp.nankai.edu.cn/rpmfusion/nonfree/fedora/rpmfusion-nonfree-release-stable.noarch.rpm'</span></pre>
+                <p>然后请到 /etc/yum.repos.d 中修改您要开启的 RPM Fusion 库的 repo 文件，修改方法如下：<p>
+                <ol>
+                    <li>注释 mirrorlist 开头的行</li>
+                    <li>取消注释 baseurl 开头的行</li>
+                    <li>将 baseurl 中的 "download1.rpmfusion.org" 改为 "ftp.nankai.edu.cn/rpmfusion"</li>
+                    <li>执行以下命令生成缓存：
+                <pre>sudo yum makecache</pre>
+                    </li>
+                </ol>
+            </div>
+            <div id="Gentoo">
+                <h1>Gentoo</h1>
+                <p>用您喜欢的编辑器编辑 /etc/make.conf (请注意备份)</p>
+                <p>添加以下一行：</p>
+                <ul>
+                    <li>
+                        <p>distfile</p>
+                        <p>不含 experimental 和 releases</p>
+                        <pre>GENTOO_MIRRORS="http://ftp.nankai.edu.cn/gentoo/"</pre>
+                    </li>
+                    <li>
+                        <p>portage</p>
+                        <pre>SYNC="rsync://ftp.nankai.edu.cn/gentoo-portage"</pre>
+                    </li>
+                </ul>
+            </div>
+            <div id="LinuxMint">
+                <h1>Linux Mint</h1>
+                <p>用您喜欢的编辑器编辑 /etc/apt/sources.list (请注意备份)</p>
+                <p>将linuxmint的链接相应改为</p>
+                <pre>http://ftp.nankai.edu.cn/linuxmint/</pre>
+                <p>将ubuntu的链接（除non-free和partner）相应改为</p>
+                <pre>http://ftp.nankai.edu.cn/ubuntu/</pre>
+                <p>执行以下命令同步本地包数据库：</p>
+                <pre>sudo apt-get update</pre>
+            </div>
+            <div id="Ubuntu">
+                <h1>Ubuntu</h1>
+                <p>请选择您正在使用的版本(默认为 Ubuntu 12.10 Quantal)：
+                    <select name="field.series" size="1" onchange="updateUbuntuVersion(this);">
+                        <option selected = "selected" value="quantal">Quantal (12.10)</option>
+                        <option value="precise">Precise (12.04)</option>
+                        <option value="oneiric">Oneiric (11.10)</option>
+                        <option value="natty">Natty (11.04)</option>
+                        <option value="maverick">Maverick (10.10)</option>
+                        <option value="lucid">Lucid (10.04)</option>
+                        <option value="hardy">Hardy (8.04)</option>
+                    </select>
+                </p>
+                <p>用您喜欢的编辑器编辑 /etc/apt/sources.list (请注意备份)</p>
+                <p>替换为或加入如下内容：</p>
+                <pre>
+deb http://ftp.nankai.edu.cn/ubuntu/ <span class="ubuntu-version">quantal</span> main multiverse restricted universe
+deb http://ftp.nankai.edu.cn/ubuntu/ <span class="ubuntu-version">quantal</span>-backports main multiverse restricted universe
+deb http://ftp.nankai.edu.cn/ubuntu/ <span class="ubuntu-version">quantal</span>-proposed main multiverse restricted universe
+deb http://ftp.nankai.edu.cn/ubuntu/ <span class="ubuntu-version">quantal</span>-security main multiverse restricted universe
+deb http://ftp.nankai.edu.cn/ubuntu/ <span class="ubuntu-version">quantal</span>-updates main multiverse restricted universe
+deb-src http://ftp.nankai.edu.cn/ubuntu/ <span class="ubuntu-version">quantal</span> main multiverse restricted universe
+deb-src http://ftp.nankai.edu.cn/ubuntu/ <span class="ubuntu-version">quantal</span>-backports main multiverse restricted universe
+deb-src http://ftp.nankai.edu.cn/ubuntu/ <span class="ubuntu-version">quantal</span>-proposed main multiverse restricted universe
+deb-src http://ftp.nankai.edu.cn/ubuntu/ <span class="ubuntu-version">quantal</span>-security main multiverse restricted universe
+deb-src http://ftp.nankai.edu.cn/ubuntu/ <span class="ubuntu-version">quantal</span>-updates main multiverse restricted universe</pre>
+                <p>执行以下命令同步本地包数据库：</p>
+                <pre>sudo apt-get update</pre>
+            </div>
+            <div id="RubyGems">
+                <h1>RubyGems</h1>
+                <h2>gem</h2>
+                <pre>
+gem source -r http://rubygems.org/
+gem source -a http://ftp.nankai.edu.cn/rubygems/</pre>
+                <h2>bundle</h2>
+                <p>请修改Gemfile</p>
+                <pre>
+source 'http://ftp.nankai.edu.cn/rubygems/'</pre>
+            </div>
+        </div>
+        <div id="Footer">
+            (ɔ) 2012 <a href="http://www.nankai.edu.cn">NKU</a>. Page designed by <a href="http://www.fanhe.org/">ZR</a>.
+        </div>
+    </body>
+</html>
